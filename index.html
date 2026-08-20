@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Play | Pet Grooming & Boarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for a Playful, Friendly Theme */
+        :root {
+            --primary: #0d9488; /* Soft Teal */
+            --primary-light: #14b8a6;
+            --secondary: #f97316; /* Warm Orange */
+            --secondary-hover: #ea580c;
+            --bg-color: #fffbeb; /* Warm Cream */
+            --white: #ffffff;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--secondary); }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(249, 115, 22, 0.25);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Hero Section (Using a CSS Pattern instead of an image to prevent errors) */
+        .hero {
+            background-color: var(--primary);
+            background-image: radial-gradient(var(--primary-light) 2px, transparent 2px);
+            background-size: 30px 30px;
+            padding: 6rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            color: var(--white);
+            min-height: 70vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image-placeholder {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-image-placeholder img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: -15px 15px 0 var(--secondary);
+        }
+
+        /* Services Section */
+        .section-pad { padding: 5rem 5%; }
+        .text-center { text-align: center; }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .service-card p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .price-tag { font-weight: 800; color: var(--secondary); font-size: 1.2rem; }
+
+        /* Trust / Info Section */
+        .trust-section {
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .trust-img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .check-list { list-style: none; margin-top: 1.5rem; }
+        .check-list li { margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .check-list li::before { content: '🐾'; }
+
+        /* Booking Section */
+        .booking-section { background-color: var(--primary); color: var(--white); }
+        .booking-section .section-title { color: var(--white); }
+        .booking-section .section-subtitle { color: #ccfbf1; }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            color: var(--text-dark);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .trust-section { flex-direction: column; grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.8rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🐾 Paws <span>&</span> Play</a>
+        <nav>
+            <a href="#services">Services & Rates</a>
+            <a href="#about">Our Facility</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#book" class="btn">Book a Stay</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Your Pet's Favorite Home Away From Home.</h1>
+            <p>Premium grooming, engaging daycare, and cage-free luxury boarding for dogs and cats right here in Kempton Park.</p>
+            <a href="#book" class="btn" style="background-color: var(--white); color: var(--primary);">Schedule a Visit</a>
+        </div>
+        <div class="hero-image-placeholder">
+            <!-- 100% Reliable Placeholder Image -->
+            <img src="https://placehold.co/600x500/f97316/ffffff?text=Add+A+Happy+Dog+Photo+Here" alt="Placeholder for Pet Photo">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-pad">
+        <div class="text-center">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Tail-wagging treatments and safe, supervised playtime.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🛁</div>
+                <h3>Spa & Grooming</h3>
+                <p>Full-service wash, blow-dry, breed-specific styling, nail trimming, and ear cleaning.</p>
+                <div class="price-tag">From R 250</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎾</div>
+                <h3>Doggy Daycare</h3>
+                <p>Fully supervised indoor and outdoor play areas. Perfect for socialization and burning energy while you work.</p>
+                <div class="price-tag">R 180 / Day</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌙</div>
+                <h3>Luxury Boarding</h3>
+                <p>Private, climate-controlled suites for overnight stays. Includes daily updates and photos sent to your phone.</p>
+                <div class="price-tag">R 300 / Night</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="about" class="section-pad trust-section">
+        <div>
+            <!-- 100% Reliable Placeholder Image -->
+            <img src="https://placehold.co/600x400/0d9488/ffffff?text=Add+Facility+Photo+Here" alt="Facility Placeholder" class="trust-img">
+        </div>
+        <div>
+            <h2 class="section-title">Safety & Comfort First</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1rem;">We know it's hard to leave your furry family members behind. That's why we've designed our facility to be as stress-free and comfortable as possible.</p>
+            <ul class="check-list">
+                <li>24/7 On-site staff and veterinary support on call.</li>
+                <li>Separate play zones for large dogs, small dogs, and cats.</li>
+                <li>Strict vaccination and health screening requirements.</li>
+                <li>Webcam access so you can check in on your pet anytime.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="book" class="section-pad booking-section">
+        <div class="text-center">
+            <h2 class="section-title">Request a Reservation</h2>
+            <p class="section-subtitle">Fill out the form below and our team will confirm your spot shortly.</p>
+        </div>
+
+        <div class="booking-container">
+            <form action="#" method="POST">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" required placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="082 555 0199">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Pet's Name & Breed</label>
+                        <input type="text" required placeholder="e.g. Max, Golden Retriever">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Required</label>
+                        <select>
+                            <option>Grooming Appointment</option>
+                            <option>Daycare</option>
+                            <option>Overnight Boarding</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Check-in Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Check-out Date (if boarding)</label>
+                        <input type="date">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem; font-size: 1.2rem;">Send Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Paws & Play Pet Facility. Kempton Park, Gauteng.</p>
+    </footer>
+
+</body>
+</html>
